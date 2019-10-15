@@ -24,11 +24,12 @@ const [query, setQuery] = useState('chicken')
       const response = await fetch(`https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}`)
       const data = await response.json();
       setRecipes(data.hits);
-      console.log(data.hits);
+      console.log(data);
   };
 
   const updateSearch = e => {
       setSearch(e.target.value);
+
   };
 
   const getSearch = e => {
@@ -49,7 +50,7 @@ const [query, setQuery] = useState('chicken')
               <Recipe
                   key={recipe.recipe.label}
                   title={recipe.recipe.label}
-                  calories={recipe.recipe.calories}
+                  calories={recipe.recipe.healthLabels}
                   image={recipe.recipe.image}
                   ingredients={recipe.recipe.ingredients}
               />
