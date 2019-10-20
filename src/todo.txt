@@ -1,0 +1,3 @@
+add a option to choose alergies
+trim the calories
+add a nav bar

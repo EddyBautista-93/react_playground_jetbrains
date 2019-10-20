@@ -1,6 +1,10 @@
 import React,{useEffect,useState} from 'react';
 import Recipe from './Recipe';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Navbar, Form, Button,FormControl, NavDropdown, Nav } from 'react-bootstrap';
+
+
 
 
 const App = () => {
@@ -40,11 +44,34 @@ const [query, setQuery] = useState('chicken')
 
   return (
       <div className="App">
+
         {/*<h1>Hello React</h1>*/}
-          <form onSubmit={getSearch} className="search-form">
-              <input className="search-bar" type="text" value={search} onChange={updateSearch}/>
-              <button className="search-button" type="submit">Search</button>
-          </form>
+        {/*  <Button variant="primary" size="lg" active>*/}
+        {/*      Primary button*/}
+        {/*  </Button>*/}
+
+
+          <Navbar bg="light" expand="lg">
+              <Navbar.Brand href="#home">Recipes</Navbar.Brand>
+              <Navbar.Toggle aria-controls="basic-navbar-nav" />
+              <Navbar.Collapse id="basic-navbar-nav">
+                  <Nav className="mr-auto">
+                      <Nav.Link href="#home">Home</Nav.Link>
+                      <Nav.Link href="#link">Link</Nav.Link>
+                      <NavDropdown title="Dropdown" id="basic-nav-dropdown">
+                          <NavDropdown.Item href="#action/3.1">Recipes</NavDropdown.Item>
+                          <NavDropdown.Item href="#action/3.2">More Recipes</NavDropdown.Item>
+                          <NavDropdown.Divider />
+                          <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+                      </NavDropdown>
+                  </Nav>
+                  <Form inline onSubmit={getSearch}>
+                      <FormControl className="search-form" type="text" placeholder="Search" className="mr-sm-2" />
+                      <input className="search-bar" type="text" value={search} onChange={updateSearch}/>
+                      <Button variant="outline-success" className="search-button" type="submit">Search</Button>
+                  </Form>
+              </Navbar.Collapse>
+          </Navbar>
           <div className="info">
           {recipes.map(recipe => (
               <Recipe
